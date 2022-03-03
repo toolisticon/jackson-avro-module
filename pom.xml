@@ -4,7 +4,7 @@
 
   <groupId>io.toolisticon.jackson.module</groupId>
   <artifactId>jackson-avro-module</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <url>https://github.com/toolisticon/jackson-avro-module/</url>
 
