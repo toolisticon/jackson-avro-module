@@ -38,7 +38,6 @@ class JacksonAvroModuleJavaTest {
       )
     );
 
-
   @Test
   void serializing_using_module() throws JsonProcessingException {
     ObjectMapper om = new ObjectMapper().registerModule(new JacksonAvroModule());

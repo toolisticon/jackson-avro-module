@@ -1,8 +1,5 @@
 package io.toolisticon.jackson.module
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect
-import com.fasterxml.jackson.annotation.PropertyAccessor
-import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import global.event.OrderImportedEvent
@@ -10,7 +7,6 @@ import global.model.Address
 import global.model.Customer
 import global.model.OrderPosition
 import mu.KLogging
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
