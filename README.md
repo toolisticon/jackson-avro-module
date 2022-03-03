@@ -1,10 +1,10 @@
-# BASE_ARTIFACT_ID
+# jackson-avro-module
 
 Template repository for usage in organizations: toolisticon, holunda-io, holixon...
 
-[![Build Status](https://github.com/GITHUB_ORGANIZATION/GITHUB_REPOSITORY/workflows/Development%20branches/badge.svg)](https://github.com/GITHUB_ORGANIZATION/GITHUB_REPOSITORY/actions)
+[![Build Status](https://github.com/toolisticon/jackson-avro-module/workflows/Development%20branches/badge.svg)](https://github.com/toolisticon/jackson-avro-module/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/BASE_GROUP_ID/BASE_ARTIFACT_ID/badge.svg)](https://maven-badges.herokuapp.com/maven-central/BASE_GROUP_ID/BASE_ARTIFACT_ID)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson/jackson-avro-module/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson/jackson-avro-module)
 
 This repository is a **template repository** designed to be a template for the next project.
 
