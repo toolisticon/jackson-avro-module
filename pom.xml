@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.toolisticon.jackson</groupId>
+  <groupId>io.toolisticon.jackson.module</groupId>
   <artifactId>jackson-avro-module</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>${project.artifactId}</name>
@@ -11,7 +11,17 @@
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <kotlin.version>1.6.10</kotlin.version>
+    <kotlin-logging.version>2.1.21</kotlin-logging.version>
     <java.version>11</java.version>
+
+    <avro.version>1.11.0</avro.version>
+    <jackson.version>2.13.1</jackson.version>
+
+    <!-- TEST -->
+    <junit5.version>5.8.2</junit5.version>
+    <mockito.version>4.0.0</mockito.version>
+    <assertj.version>3.22.0</assertj.version>
+    <slf4j.version>1.7.36</slf4j.version>
   </properties>
 
   <dependencyManagement>
@@ -24,9 +34,18 @@
         <type>pom</type>
       </dependency>
       <dependency>
+        <groupId>com.fasterxml.jackson</groupId>
+        <artifactId>jackson-bom</artifactId>
+        <version>${jackson.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+
+      <!-- TEST -->
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.8.2</version>
+        <version>${junit5.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -34,22 +53,44 @@
   </dependencyManagement>
 
   <dependencies>
+    <!-- KOTLIN -->
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-reflect</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.github.microutils</groupId>
+      <artifactId>kotlin-logging-jvm</artifactId>
+      <version>${kotlin-logging.version}</version>
+      <scope>provided</scope>
     </dependency>
 
+    <!-- LIB -->
+    <dependency>
+      <groupId>org.apache.avro</groupId>
+      <artifactId>avro</artifactId>
+      <version>${avro.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- TEST -->
     <dependency>
       <groupId>org.mockito.kotlin</groupId>
       <artifactId>mockito-kotlin</artifactId>
-      <version>4.0.0</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
@@ -63,7 +104,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.22.0</version>
+      <version>${assertj.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -71,11 +112,16 @@
       <artifactId>kotlin-test-junit5</artifactId>
       <scope>test</scope>
     </dependency>
-
     <dependency>
-      <groupId>io.github.microutils</groupId>
-      <artifactId>kotlin-logging-jvm</artifactId>
-      <version>2.1.21</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-kotlin</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -613,17 +659,6 @@
       <roles>
         <role>Product Owner</role>
         <role>Developer</role>
-      </roles>
-      <organization>Holisticon AG</organization>
-      <organizationUrl>https://holisticon.de</organizationUrl>
-    </developer>
-    <developer>
-      <id>zambrovski</id>
-      <name>Simon Zambrovski</name>
-      <roles>
-        <role>Product Owner</role>
-        <role>Developer</role>
-        <role>Toolsmith</role>
       </roles>
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>

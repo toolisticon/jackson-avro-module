@@ -1,41 +1,30 @@
 # jackson-avro-module
 
-Template repository for usage in organizations: toolisticon, holunda-io, holixon...
+A jackson-module that allows serializing and deserializing generated avro specific record instances with the jackson ObjectMapper. 
 
 [![Build Status](https://github.com/toolisticon/jackson-avro-module/workflows/Development%20branches/badge.svg)](https://github.com/toolisticon/jackson-avro-module/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson/jackson-avro-module/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson/jackson-avro-module)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson.module/jackson-avro-module/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson.module/jackson-avro-module)
 
-This repository is a **template repository** designed to be a template for the next project.
+## The problem
+
+If you define your schema in avro and generate a class using the avro generator, the generated class contains fields (`schema`, `specificData`)
+that can not be serialized by the default jackson ObjectMapper.
+
+## Non working workarounds
+
+* avro itself provides a `JacksonUtils` class that can ignore fields based on visibility. Problem: The feature is hidden and modifies the global `ObjectMapper`, so a change only required for `SpecificRecordBase` classes will affect all.
+* jackson on the other hand provides the `com.fasterxml.jackson.dataformat.avro.AvroSerializerModifier`, but this one just ignores (current version 2.13.1) just one of the two needed properties.
+
+## The solution
+
+This library provides a single [`JacksonAvroModule`](./src/main/kotlin/JacksonAvroModule.kt) that uses a modified version of the `jackson-databind-avro` modifier to exclude bean properties from serialization. 
 
 ## How to use
 
-* create a new repo on github (can be in any organization). Choose this project as template repository. Copy all branches, so the `master`exists in your repo (for the github actions)
-* on the command line: clone your new repo locally
-* in the `setup.sh` script: set your organization, repository and base package
-* run the `setup.sh` script, all placeholders are filled with your information
-* delete the setup-script
-* Update the `README.md`
-* in the `developers` section of the `pom.xml`: mention yourself ... it is your project.
+It is as simple as adding any other jackson-module to your `ObjectMapper` configuration:
 
-## Things to change after usage of template
-
-To change the following values, modify the placeholders in `setup.sh` and run it.
-This is a one-time operation, you can safely delete the `setup.sh` file afterwards.
-
-Of course, you can also edit manually .... and do not forget to change this `README.md` with YOUR project specific information :-).
-
-### Maven pom.xml 
-
-* Maven coordinates: `groupId`, `artifactId` and `version`
-* Main description: `name`, `url`, `description`
-* SCM: `connection`, `url`, `developerConnection`
-
-### Issue Template
-
-* correct the URL to repo
-
-### Issue Labels
-
-* Check the release-notes.yml for details, but create the following labels: Type: dependencies, Type: bug, Type: documentation, Type: question, Type: enhancement
-
+```
+ObjectMapper om = new ObjectMapper()
+                      .registerModule(new JacksonAvroModule());
+```
