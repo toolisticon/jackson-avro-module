@@ -6,6 +6,7 @@
   <artifactId>jackson-avro-module</artifactId>
   <version>0.1.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
+  <description>Serialize/Deserialize generated avro records to/from json using jackson objectMapper</description>
   <url>https://github.com/toolisticon/jackson-avro-module/</url>
 
   <properties>
