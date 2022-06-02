@@ -2,6 +2,7 @@
 
 A jackson-module that allows serializing and deserializing generated avro specific record instances with the jackson ObjectMapper. 
 
+[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/toolisticon/jackson-avro-module/workflows/Development%20branches/badge.svg)](https://github.com/toolisticon/jackson-avro-module/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson.module/jackson-avro-module/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.toolisticon.jackson.module/jackson-avro-module)
