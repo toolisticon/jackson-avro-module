@@ -15,7 +15,7 @@ that can not be serialized by the default jackson ObjectMapper.
 ## Non working workarounds
 
 * avro itself provides a `JacksonUtils` class that can ignore fields based on visibility. Problem: The feature is hidden and modifies the global `ObjectMapper`, so a change only required for `SpecificRecordBase` classes will affect all.
-* jackson on the other hand provides the `com.fasterxml.jackson.dataformat.avro.AvroSerializerModifier`, but this one just ignores (current version 2.13.1) just one of the two needed properties.
+* jackson on the other hand provides the `com.fasterxml.jackson.dataformat.avro.AvroSerializerModifier`, but this one just ignores (current version 2.13.4) just one of the two needed properties.
 
 ## The solution
 
