@@ -11,22 +11,23 @@
 
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <kotlin.version>1.6.10</kotlin.version>
-    <kotlin-logging.version>2.1.21</kotlin-logging.version>
+    <kotlin.version>1.7.20</kotlin.version>
+    <kotlin-logging.version>3.0.2</kotlin-logging.version>
     <java.version>11</java.version>
 
-    <avro.version>1.11.0</avro.version>
-    <jackson.version>2.13.1</jackson.version>
+    <avro.version>1.11.1</avro.version>
+    <jackson.version>2.13.4</jackson.version>
 
     <!-- TEST -->
-    <junit5.version>5.8.2</junit5.version>
+    <junit5.version>5.9.1</junit5.version>
     <mockito.version>4.0.0</mockito.version>
-    <assertj.version>3.22.0</assertj.version>
-    <slf4j.version>1.7.36</slf4j.version>
+    <assertj.version>3.23.1</assertj.version>
+    <slf4j.version>2.0.3</slf4j.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <!-- KOTLIN -->
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-bom</artifactId>
@@ -34,6 +35,7 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+      <!-- JACKSON -->
       <dependency>
         <groupId>com.fasterxml.jackson</groupId>
         <artifactId>jackson-bom</artifactId>
@@ -358,7 +360,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.6.10</version>
+          <version>1.7.20</version>
           <executions>
             <execution>
               <phase>package</phase>
